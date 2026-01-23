@@ -1,0 +1,173 @@
+#root {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.container {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: #555;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.errore {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid #f5c6cb;
+}
+
+.form-section {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+}
+
+.btn-aggiungi {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.btn-aggiungi:hover {
+  background-color: #45a049;
+}
+
+.libri-section {
+  margin-top: 2rem;
+}
+
+.sezione-titolo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sezione-titolo h2 {
+  margin: 0;
+}
+
+.btn-elimina-tutti {
+  background-color: #ff9800;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-elimina-tutti:hover {
+  background-color: #e68900;
+}
+
+.ricerca-section {
+  margin-bottom: 1.5rem;
+}
+
+.input-ricerca {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  color: #000;
+}
+
+.input-ricerca:focus {
+  outline: none;
+  border-color: #2196F3;
+  background-color: #fff;
+}
+
+.libro-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.libro-info {
+  text-align: left;
+  flex: 1;
+}
+
+.libro-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.libro-info p {
+  margin: 0.3rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.btn-rimuovi {
+  background-color: #f44336;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+.btn-rimuovi:hover {
+  background-color: #da190b;
+}
