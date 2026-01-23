@@ -85,6 +85,33 @@ def elimina_libro(id):
     return jsonify({"messaggio": "Libro eliminato"}), 200
 
 
+@app.route("/api/libri", methods=["DELETE"])
+def elimina_tutti_libri():
+    global libri
+    libri[:] = []
+    return jsonify({"messaggio": "Tutti i libri sono stati eliminati"}), 200
+
+
+@app.route("/api/libri/genera", methods=["POST"])
+def genera_nuovi_libri():
+    global prossimo_id
+    libri_generati = []
+    
+    for i in range(10):
+        libro = {
+            "id": prossimo_id,
+            "titolo": fake.sentence(nb_words=4),
+            "autore": fake.name(),
+            "anno": fake.random_int(min=1900, max=2024),
+            "genere": fake.random_element(generi)
+        }
+        libri.append(libro)
+        libri_generati.append(libro)
+        prossimo_id += 1
+    
+    return jsonify(libri_generati), 201
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
 
