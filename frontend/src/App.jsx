@@ -5,6 +5,9 @@ function App() {
   const [libri, setLibri] = useState([])
   const [ricerca, setRicerca] = useState('')
   const [errore, setErrore] = useState('')
+  const [formTitolo, setFormTitolo] = useState('')
+  const [formAutore, setFormAutore] = useState('')
+  const [formGenere, setFormGenere] = useState('Fantasy')
 
   const generi = [
     'Fantasy', 'Distopia', 'Romanzo', 'Mistero', 'Fantascienza',
@@ -81,8 +84,44 @@ function App() {
       })
   }
 
+  function aggiungiLibro() {
+    if (!formTitolo.trim() || !formAutore.trim()) {
+      alert('Titolo e Autore sono obbligatori')
+      return
+    }
+
+    fetch('http://localhost:5000/api/libri', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        titolo: formTitolo,
+        autore: formAutore,
+        genere: formGenere,
+        anno: new Date().getFullYear()
+      })
+    })
+      .then(risposta => {
+        if (!risposta.ok) {
+          throw new Error(`HTTP ${risposta.status}`)
+        }
+        return risposta.json()
+      })
+      .then(nuovoLibro => {
+        setLibri([...libri, nuovoLibro])
+        setFormTitolo('')
+        setFormAutore('')
+        setFormGenere('Fantasy')
+      })
+      .catch(err => {
+        console.error('Errore aggiunta libro:', err)
+        alert('Errore nell\'aggiunta del libro')
+      })
+  }
+
   function filtroLibri() {
-    let libriFiltraci = libri.filter(libro => {
+    let libriFiltrati = libri.filter(libro => {
       let titolo_minuscolo = libro.titolo.toLowerCase()
       let autore_minuscolo = libro.autore.toLowerCase()
       let genere_minuscolo = libro.genere.toLowerCase()
@@ -101,7 +140,7 @@ function App() {
       return false
     })
 
-    return libriFiltraci
+    return libriFiltrati
   }
 
   let libriMostrati = filtroLibri()
@@ -111,6 +150,40 @@ function App() {
       <h1>La Mia Libreria</h1>
 
       {errore && <div className="errore">{errore}</div>}
+
+      <div className="form-section">
+        <h2>Aggiungi un libro</h2>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Titolo"
+            value={formTitolo}
+            onChange={(e) => setFormTitolo(e.target.value)}
+            className="form-input"
+          />
+          <input
+            type="text"
+            placeholder="Autore"
+            value={formAutore}
+            onChange={(e) => setFormAutore(e.target.value)}
+            className="form-input"
+          />
+          <select
+            value={formGenere}
+            onChange={(e) => setFormGenere(e.target.value)}
+            className="form-select"
+          >
+            {generi.map((g) => (
+              <option key={g} value={g}>
+                {g}
+              </option>
+            ))}
+          </select>
+          <button onClick={aggiungiLibro} className="btn-aggiungi">
+            Aggiungi
+          </button>
+        </div>
+      </div>
 
       <div className="libri-section">
         <div className="sezione-titolo">
